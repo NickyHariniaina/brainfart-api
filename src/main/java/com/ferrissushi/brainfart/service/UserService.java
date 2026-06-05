@@ -3,7 +3,6 @@ package com.ferrissushi.brainfart.service;
 import com.ferrissushi.brainfart.model.User;
 import com.ferrissushi.brainfart.model.dto.CreateUserDto;
 import com.ferrissushi.brainfart.repository.UserRepository;
-
 import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
