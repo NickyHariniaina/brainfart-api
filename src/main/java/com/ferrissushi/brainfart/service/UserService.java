@@ -2,6 +2,7 @@ package com.ferrissushi.brainfart.service;
 
 import com.ferrissushi.brainfart.model.User;
 import com.ferrissushi.brainfart.model.dto.CreateUserDto;
+import com.ferrissushi.brainfart.model.dto.UserDto;
 import com.ferrissushi.brainfart.repository.UserRepository;
 import java.time.Instant;
 import java.util.List;
@@ -16,8 +17,8 @@ import org.springframework.stereotype.Service;
 public class UserService {
   private final UserRepository userRepository;
 
-  public List<User> getAll() {
-    return userRepository.findAll();
+  public List<UserDto> getAll() {
+    return userRepository.findAll().stream().map(UserDto::from).toList();
   }
 
   public User save(CreateUserDto request) {
