@@ -15,7 +15,6 @@ import lombok.*;
 @EqualsAndHashCode
 public class Room {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private String id;
 
   @Column(unique = true)
@@ -30,8 +29,8 @@ public class Room {
   private Integer chronoTiming = 10;
 
   @Column(name = "question_type")
-  @Builder.Default
-  private QuestionType questionType = new QuestionType(UUID.randomUUID().toString(), "ALL");
+  // TODO: Should be a relation.
+  private QuestionType questionType;
 
 
   @Column(name = "question_count", nullable = false)
