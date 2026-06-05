@@ -30,7 +30,7 @@ import org.hibernate.type.SqlTypes;
 public class User {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue(generator = "uuid2")
   private String id;
 
   @Column(nullable = false)
