@@ -1,6 +1,7 @@
 package com.ferrissushi.brainfart.endpoint.rest.controller;
 
 import com.ferrissushi.brainfart.model.User;
+import com.ferrissushi.brainfart.model.dto.CreateUserDto;
 import com.ferrissushi.brainfart.service.UserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -22,7 +23,7 @@ public class UserController {
   }
 
   @PostMapping("/users")
-  public User save(@RequestBody @Valid User user) {
-    return userService.save(user);
+  public User save(@RequestBody @Valid CreateUserDto request) {
+    return userService.save(request);
   }
 }
