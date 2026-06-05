@@ -26,8 +26,8 @@ public class Room {
   @Builder.Default
   private Integer chronoTiming = 10;
 
-  @Column(name = "question_type")
-  // TODO: Should be a relation.
+  @ManyToOne
+  @JoinColumn(name= "question_type_id")
   private QuestionType questionType;
 
   @Column(name = "question_count", nullable = false)
