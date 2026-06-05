@@ -27,15 +27,18 @@ public class Room {
   private Integer chronoTiming = 10;
 
   @ManyToOne
-  @JoinColumn(name= "question_type_id")
+  @JoinColumn(name = "question_type_id")
   private QuestionType questionType;
 
   @Column(name = "question_count", nullable = false)
   @Builder.Default
   private Integer questionCount = 10;
 
-  @Column(name = "opened_by", nullable = false)
+  @ManyToOne
+  @JoinColumn(name = "opened_by_id")
   private User openedBy;
 
+  @ManyToOne
+  @JoinColumn(name = "winner_id")
   private User winner;
 }

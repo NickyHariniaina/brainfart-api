@@ -1,8 +1,7 @@
 package com.ferrissushi.brainfart.model;
 
-import java.util.List;
-
 import jakarta.persistence.*;
+import java.util.List;
 import lombok.*;
 
 @Entity
