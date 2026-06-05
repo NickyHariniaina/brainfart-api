@@ -2,6 +2,7 @@ package com.ferrissushi.brainfart.endpoint.rest.controller;
 
 import com.ferrissushi.brainfart.model.User;
 import com.ferrissushi.brainfart.model.dto.CreateUserDto;
+import com.ferrissushi.brainfart.model.dto.UserDto;
 import com.ferrissushi.brainfart.service.UserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -18,7 +19,7 @@ public class UserController {
   private final UserService userService;
 
   @GetMapping("/users")
-  public List<User> getAll() {
+  public List<UserDto> getAll() {
     return userService.getAll();
   }
 
