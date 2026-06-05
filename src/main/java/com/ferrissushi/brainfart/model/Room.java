@@ -2,7 +2,6 @@ package com.ferrissushi.brainfart.model;
 
 import jakarta.persistence.*;
 import java.time.Instant;
-import java.util.UUID;
 import lombok.*;
 
 @Entity
@@ -14,8 +13,7 @@ import lombok.*;
 @NoArgsConstructor
 @EqualsAndHashCode
 public class Room {
-  @Id
-  private String id;
+  @Id private String id;
 
   @Column(unique = true)
   private String title;
@@ -31,7 +29,6 @@ public class Room {
   @Column(name = "question_type")
   // TODO: Should be a relation.
   private QuestionType questionType;
-
 
   @Column(name = "question_count", nullable = false)
   @Builder.Default
