@@ -58,8 +58,8 @@ public class User {
   private Integer rank;
 
   @Builder.Default
-  @Column(nullable = false, name = "highest_score")
-  private Integer highestScore = 0;
+  @Column(nullable = false, name = "current_score")
+  private Integer currentScore = 0;
 
   @Column(name = "display_username")
   private String displayUsername;

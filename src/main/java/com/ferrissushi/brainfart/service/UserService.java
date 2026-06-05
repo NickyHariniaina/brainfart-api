@@ -37,7 +37,7 @@ public class UserService {
             .displayUsername(request.username())
             .createdAt(Instant.now())
             .updatedAt(Instant.now())
-            .highestScore(0)
+            .currentScore(0)
             .banExpires(null)
             .build();
     return userRepository.save(user);
