@@ -3,7 +3,6 @@ package com.ferrissushi.brainfart.model.dto;
 import com.ferrissushi.brainfart.model.QuestionType;
 import com.ferrissushi.brainfart.model.Room;
 import com.ferrissushi.brainfart.model.User;
-
 import java.time.Instant;
 import java.util.UUID;
 
