@@ -22,7 +22,7 @@ public class RoomService {
     return roomRepository.findAll().stream().map(RoomDto::from).toList();
   }
 
-  public Room Save(CreateRoomDto request) {
+  public Room save(CreateRoomDto request) {
     var user = userRepository.findByUsername("ferrissushi").orElse(User.builder().build());
     var room = request.toRoom(user);
     return roomRepository.save(room);
