@@ -1,16 +1,21 @@
 package com.ferrissushi.brainfart.service;
 
-import jakarta.transaction.Transactional;
-import java.util.List;
+import com.ferrissushi.brainfart.model.dto.RoomDto;
+import com.ferrissushi.brainfart.repository.RoomRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.List;
+
 import org.springframework.stereotype.Service;
-import com.ferrissushi.brainfart.model.Room;
-import com.ferrissushi.brainfart.repository.RoomRepository;
 
 @Service
 @AllArgsConstructor
 @Slf4j
 public class RoomService {
   private final RoomRepository roomRepository;
+
+  public List<RoomDto> findAll() {
+      return roomRepository.findAll().stream().map(RoomDto::from).toList();
+  }
 }
