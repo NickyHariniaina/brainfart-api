@@ -10,14 +10,14 @@ public record CreateRoomDto(
     String title,
     Instant startDate,
     Integer chronoTiming,
-    QuestionType questionType,
+    String questionTypeName,
     Integer questionCount) {
-  public Room toRoom(User creator) {
+  public Room toRoom(User creator, QuestionType questionType) {
     return Room.builder()
         .title(this.title)
         .startDate(this.startDate)
         .chronoTiming(this.chronoTiming)
-        .questionType(this.questionType)
+        .questionType(questionType)
         .questionCount(this.questionCount)
         .openedBy(creator)
         .id(UUID.randomUUID().toString())
