@@ -30,6 +30,10 @@ public class Room {
   @JoinColumn(name = "question_type_id")
   private QuestionType questionType;
 
+  @Column(nullable = false)
+  @Builder.Default
+  private Boolean closed = false;
+
   @Column(name = "question_count", nullable = false)
   @Builder.Default
   private Integer questionCount = 10;
