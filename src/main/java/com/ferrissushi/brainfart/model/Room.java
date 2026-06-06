@@ -1,5 +1,6 @@
 package com.ferrissushi.brainfart.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.time.Instant;
 import lombok.*;
@@ -28,6 +29,7 @@ public class Room {
 
   @ManyToOne
   @JoinColumn(name = "question_type_id")
+  @JsonIgnoreProperties("rooms")
   private QuestionType questionType;
 
   @Column(nullable = false)
