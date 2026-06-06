@@ -6,7 +6,6 @@ import com.ferrissushi.brainfart.model.dto.RoomDto;
 import com.ferrissushi.brainfart.service.RoomService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +25,6 @@ public class RoomController {
 
   @PostMapping("/rooms")
   public Room save(@RequestBody @Valid CreateRoomDto request) {
-      return roomService.save(request);
+    return roomService.save(request);
   }
 }
