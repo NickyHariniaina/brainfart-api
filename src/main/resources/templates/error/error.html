@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Error</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-slate-900 flex items-center justify-center p-4">
+  <div class="text-center">
+    <h1 class="text-8xl font-bold text-white/10" th:text="${status}">500</h1>
+    <h2 class="text-2xl font-semibold text-white -mt-8" th:text="${error}">Error</h2>
+    <p class="text-slate-400 mt-2" th:text="${message}">An unexpected error occurred.</p>
+    <a href="/login" class="mt-6 inline-flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 transition">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      </svg>
+      Go home
+    </a>
+  </div>
+</body>
+</html>
