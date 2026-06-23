@@ -1,5 +1,8 @@
 package com.spring.api.service;
 
+import com.spring.api.exception.BadRequestException;
+import com.spring.api.exception.DuplicateResourceException;
+import com.spring.api.exception.ResourceNotFoundException;
 import com.spring.api.model.User;
 import com.spring.api.model.dto.CreateUserDto;
 import com.spring.api.model.dto.UserDto;
@@ -28,6 +31,19 @@ public class UserService implements UserDetailsService {
   }
 
   public User save(CreateUserDto request) {
+
+    if (request.password().length() < 8) {
+      throw new BadRequestException("Password must be at least 8 characters");
+    }
+
+    if (userRepository.existsByUsername(request.username())) {
+      throw new DuplicateResourceException("Username already taken");
+    }
+
+    if (userRepository.existsByEmail(request.email())) {
+      throw new DuplicateResourceException("Email already in use");
+    }
+
     var user = User.builder()
         .id(UUID.randomUUID().toString())
         .name(request.name())
@@ -52,7 +68,7 @@ public class UserService implements UserDetailsService {
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
     var user = userRepository.findByUsername(username)
-        .orElseThrow(() -> new UsernameNotFoundException("User not found with username " + username));
+        .orElseThrow(() -> new ResourceNotFoundException("User not found with username " + username));
     return user;
   }
 }
