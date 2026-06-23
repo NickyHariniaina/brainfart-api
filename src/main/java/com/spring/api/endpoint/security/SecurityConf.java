@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -31,7 +32,7 @@ public class SecurityConf {
             .requestMatchers(HttpMethod.POST, "/users").permitAll()
             .requestMatchers(HttpMethod.GET, "/users").permitAll()
             .requestMatchers("/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
-            .requestMatchers("/login", "/logout").permitAll()
+            .requestMatchers("/login", "/signup", "/logout").permitAll()
             .anyRequest().authenticated())
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
@@ -41,5 +42,15 @@ public class SecurityConf {
   @Bean
   public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
     return config.getAuthenticationManager();
+  }
+
+  @Bean
+  public WebSecurityCustomizer webSecurityCustomizer() {
+    // This is actually use to prevent Spring Security to block static resources
+    // when not authenticated... this is not recommended in modern Spring Security
+    // I just wanted to try it... we can keep it in the permitAll() list to keep other
+    // security features like CSRF protection, etc. But this is a template project
+    // so I'm not going to use it in production.
+    return web -> web.ignoring().requestMatchers("/js/**", "/css/**", "/images/**");
   }
 }
