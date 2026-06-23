@@ -1,5 +1,6 @@
 package com.spring.api.service;
 
+import com.spring.api.exception.ResourceNotFoundException;
 import com.spring.api.model.Room;
 import com.spring.api.model.User;
 import com.spring.api.model.dto.CreateRoomDto;
@@ -28,7 +29,7 @@ public class RoomService {
     var questionType =
         questionTypeRepository
             .findByName(request.questionTypeName())
-            .orElseThrow(() -> new RuntimeException("Type not found"));
+            .orElseThrow(() -> new ResourceNotFoundException("Type not found"));
     var user = userRepository.findByUsername("ferrissushi").orElse(User.builder().build());
     var room = request.toRoom(user, questionType);
     return roomRepository.save(room);
