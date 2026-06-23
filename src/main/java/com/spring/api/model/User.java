@@ -78,7 +78,8 @@ public class User implements UserDetails {
   private Instant updatedAt;
 
   @Column(name = "enabled")
-  private boolean enabled = true;
+  @Builder.Default
+  private Boolean enabled = true;
 
   @Enumerated(EnumType.STRING)
   @JdbcTypeCode(SqlTypes.NAMED_ENUM)

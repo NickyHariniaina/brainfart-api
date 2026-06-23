@@ -31,7 +31,7 @@ public class SecurityConf {
             .requestMatchers(HttpMethod.POST, "/users").permitAll()
             .requestMatchers(HttpMethod.GET, "/users").permitAll()
             .requestMatchers("/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
-            .requestMatchers("/login", "/dashboard", "/logout").permitAll()
+            .requestMatchers("/login", "/logout").permitAll()
             .anyRequest().authenticated())
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
@@ -41,10 +41,5 @@ public class SecurityConf {
   @Bean
   public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
     return config.getAuthenticationManager();
-  }
-
-  @Bean
-  public PasswordEncoder passwordEncoder() {
-    return new BCryptPasswordEncoder();
   }
 }
