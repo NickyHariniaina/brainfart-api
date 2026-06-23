@@ -83,7 +83,8 @@ public class User implements UserDetails {
 
   @Enumerated(EnumType.STRING)
   @JdbcTypeCode(SqlTypes.NAMED_ENUM)
-  private Role role;
+  @Builder.Default
+  private Role role = User.Role.USER;
 
   public enum Role {
     ADMIN,
